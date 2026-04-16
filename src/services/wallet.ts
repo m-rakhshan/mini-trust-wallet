@@ -1,4 +1,5 @@
 import { HDNodeWallet, JsonRpcProvider, Mnemonic, formatEther } from 'ethers';
+import * as Crypto from 'expo-crypto';
 
 export const ETH_DERIVATION_PATH = "m/44'/60'/0'/0/0";
 
@@ -8,8 +9,10 @@ export const HARDHAT_EXPECTED_ADDRESS =
   '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
 
 export const createWalletMnemonic = (): string => {
-  const wallet = HDNodeWallet.createRandom();
-  return wallet.mnemonic?.phrase ?? '';
+  // Use Expo-native secure randomness to avoid runtime issues on device.
+  const entropy = Crypto.getRandomBytes(16);
+  const mnemonic = Mnemonic.fromEntropy(entropy);
+  return mnemonic.phrase;
 };
 
 export const validateWalletMnemonic = (mnemonic: string): boolean => {
