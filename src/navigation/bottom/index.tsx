@@ -12,16 +12,16 @@ export type BottomNavigationProps = {
 
 const Tab = createBottomTabNavigator();
 
-const BottomNavigation = (_props: BottomNavigationProps) => (
+const BottomNavigation = (props: BottomNavigationProps) => (
   <Tab.Navigator>
     <Tab.Screen name={BOTTOM_ROUTES.Wallet}>
-      {() => <Wallet walletAddress={_props.walletAddress} />}
+      {() => <Wallet walletAddress={props.walletAddress} />}
     </Tab.Screen>
     <Tab.Screen name={BOTTOM_ROUTES.Settings}>
       {() => (
         <Settings
-          walletMnemonic={_props.walletMnemonic}
-          onWalletReset={_props.onWalletReset}
+          walletMnemonic={props.walletMnemonic}
+          onWalletReset={props.onWalletReset}
         />
       )}
     </Tab.Screen>
