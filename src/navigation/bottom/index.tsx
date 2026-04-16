@@ -14,7 +14,9 @@ const Tab = createBottomTabNavigator();
 
 const BottomNavigation = (_props: BottomNavigationProps) => (
   <Tab.Navigator>
-    <Tab.Screen name={BOTTOM_ROUTES.Wallet} component={Wallet} />
+    <Tab.Screen name={BOTTOM_ROUTES.Wallet}>
+      {() => <Wallet walletAddress={_props.walletAddress} />}
+    </Tab.Screen>
     <Tab.Screen name={BOTTOM_ROUTES.Settings} component={Settings} />
   </Tab.Navigator>
 );
