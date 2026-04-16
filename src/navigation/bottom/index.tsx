@@ -17,7 +17,14 @@ const BottomNavigation = (_props: BottomNavigationProps) => (
     <Tab.Screen name={BOTTOM_ROUTES.Wallet}>
       {() => <Wallet walletAddress={_props.walletAddress} />}
     </Tab.Screen>
-    <Tab.Screen name={BOTTOM_ROUTES.Settings} component={Settings} />
+    <Tab.Screen name={BOTTOM_ROUTES.Settings}>
+      {() => (
+        <Settings
+          walletMnemonic={_props.walletMnemonic}
+          onWalletReset={_props.onWalletReset}
+        />
+      )}
+    </Tab.Screen>
   </Tab.Navigator>
 );
 
