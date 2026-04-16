@@ -23,7 +23,7 @@ const Settings = ({ walletMnemonic, onWalletReset }: SettingsProps) => {
   const handleResetWallet = () => {
     Alert.alert('Reset wallet', 'This removes your wallet from this device.', [
       { text: 'Cancel', style: 'cancel' },
-      { text: 'Reset', style: 'destructive', onPress: onWalletReset },
+      { text: 'Reset', onPress: onWalletReset },
     ]);
   };
 

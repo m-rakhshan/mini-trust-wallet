@@ -33,7 +33,7 @@ const Wallet = ({ walletAddress }: WalletProps) => {
     try {
       const currentBalance = await fetchEthBalance(walletAddress, ethRpcUrl);
       setBalance(currentBalance);
-    } catch {
+    } catch (error: any) {
       Alert.alert('Balance unavailable', 'Could not fetch balance from the RPC URL.');
     } finally {
       setIsRefreshing(false);

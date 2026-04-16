@@ -3,11 +3,6 @@ import * as Crypto from 'expo-crypto';
 
 export const ETH_DERIVATION_PATH = "m/44'/60'/0'/0/0";
 
-export const HARDHAT_TEST_MNEMONIC =
-  'test test test test test test test test test test test junk';
-export const HARDHAT_EXPECTED_ADDRESS =
-  '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266';
-
 export const createWalletMnemonic = (): string => {
   // Use Expo-native secure randomness to avoid runtime issues on device.
   const entropy = Crypto.getRandomBytes(16);
@@ -41,5 +36,7 @@ export const fetchEthBalance = async (
   return formatEther(balance);
 };
 
-export const validateHardhatFixture = (): boolean =>
-  deriveWalletAddress(HARDHAT_TEST_MNEMONIC) === HARDHAT_EXPECTED_ADDRESS;
+export const isDerivedAddressMatch = (
+  mnemonic: string,
+  expectedAddress: string,
+): boolean => deriveWalletAddress(mnemonic) === expectedAddress;
